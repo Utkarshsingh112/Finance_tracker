@@ -14,6 +14,7 @@ import {
   X
 } from 'lucide-react';
 import { format } from 'date-fns';
+import CategoryDonutChart from './CategoryDonutChart';
 
 const ExpensesList = () => {
   const { expenses, updateExpense, deleteExpense, categories } = useExpense();
@@ -227,6 +228,9 @@ const ExpensesList = () => {
       animate="visible"
       className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8"
     >
+      <div className="mb-8">
+        <CategoryDonutChart />
+      </div>
       <motion.div variants={itemVariants} className="mb-8">
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
           Your Expenses
