@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { ExpenseProvider } from './contexts/ExpenseContext';
-import Navigation from './components/Navigation';
+import Sidebar from './components/Sidebar';
 import Dashboard from './components/Dashboard';
-import AddExpense from './components/AddExpense';
-import ExpensesList from './components/ExpensesList';
-import Blog from './components/Blog';
+import Transactions from './components/Transactions';
+import Cards from './components/Cards';
+import BankAccounts from './components/BankAccounts';
+import Settings from './components/Settings';
 
 function App() {
   const [activeTab, setActiveTab] = useState('dashboard');
@@ -15,12 +16,14 @@ function App() {
     switch (activeTab) {
       case 'dashboard':
         return <Dashboard />;
-      case 'expenses':
-        return <ExpensesList />;
-      case 'add-expense':
-        return <AddExpense />;
-      case 'blog':
-        return <Blog />;
+      case 'transactions':
+        return <Transactions />;
+      case 'cards':
+        return <Cards />;
+      case 'bank-accounts':
+        return <BankAccounts />;
+      case 'settings':
+        return <Settings />;
       default:
         return <Dashboard />;
     }
@@ -36,10 +39,10 @@ function App() {
   return (
     <ThemeProvider>
       <ExpenseProvider>
-        <div className="min-h-screen bg-gray-50 dark:bg-primary-900 transition-all duration-300">
-          <Navigation activeTab={activeTab} setActiveTab={setActiveTab} />
+        <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-all duration-300 flex">
+          <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} />
           
-          <main className="pb-8">
+          <main className="flex-1 overflow-y-auto">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeTab}

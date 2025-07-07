@@ -60,33 +60,19 @@ const CategoryDonutChart = () => {
   const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
     if (percent < 0.05) return null;
     const RADIAN = Math.PI / 180;
-    const radius = outerRadius + 18;
+    const radius = outerRadius + 28; // further out for clarity
     const x = cx + radius * Math.cos(-midAngle * RADIAN);
     const y = cy + radius * Math.sin(-midAngle * RADIAN);
     return (
       <g>
-        <rect
-          x={x - 22}
-          y={y - 14}
-          width={44}
-          height={28}
-          rx={12}
-          fill="white"
-          opacity={0.92}
-          style={{ filter: 'drop-shadow(0 1px 4px rgba(0,0,0,0.10))' }}
-        />
-        <text
-          x={x}
-          y={y}
-          fill="#22223b"
-          textAnchor="middle"
-          dominantBaseline="central"
-          fontSize={15}
-          fontWeight="bold"
-          style={{ textShadow: '0 1px 4px rgba(0,0,0,0.10)' }}
-        >
-          {(percent * 100).toFixed(0)}%
-        </text>
+        <foreignObject x={x - 28} y={y - 18} width={56} height={36}>
+          <div
+            className="flex items-center justify-center w-full h-full rounded-xl backdrop-blur-md bg-white/70 dark:bg-gray-900/70 border border-white/30 dark:border-gray-700/60 shadow text-xs font-bold text-primary-900 dark:text-primary-50"
+            style={{ fontSize: 15 }}
+          >
+            {(percent * 100).toFixed(0)}%
+          </div>
+        </foreignObject>
       </g>
     );
   };
@@ -118,11 +104,7 @@ const CategoryDonutChart = () => {
                 isAnimationActive={true}
                 animationDuration={900}
                 activeIndex={activeIndex}
-                activeShape={(props) => (
-                  <g>
-                    <Pie {...props} outerRadius={110} fill={COLORS[props.index % COLORS.length]} />
-                  </g>
-                )}
+                activeOuterRadius={110} // pop effect on hover
                 onMouseEnter={(_, idx) => setActiveIndex(idx)}
                 onMouseLeave={() => setActiveIndex(null)}
               >
