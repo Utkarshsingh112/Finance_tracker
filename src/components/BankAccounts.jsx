@@ -44,7 +44,7 @@ const BankAccounts = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.1 }}
-      className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow"
+      className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow border border-gray-200 dark:border-gray-700"
     >
       <div className="flex justify-between items-start mb-4">
         <div className="flex items-center space-x-3">
@@ -52,21 +52,21 @@ const BankAccounts = () => {
             <Building2 className="w-6 h-6 text-white" />
           </div>
           <div>
-            <h3 className="font-semibold text-gray-900">{account.name}</h3>
-            <p className="text-sm text-gray-500">{account.bank}</p>
+            <h3 className="font-semibold text-gray-900 dark:text-gray-100">{account.name}</h3>
+            <p className="text-sm text-gray-500 dark:text-gray-400">{account.bank}</p>
           </div>
         </div>
-        <button className="text-gray-400 hover:text-gray-600">
+        <button className="text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-400">
           <MoreVertical className="w-5 h-5" />
         </button>
       </div>
       
       <div className="space-y-2">
         <div className="flex justify-between items-center">
-          <span className="text-sm text-gray-500">Balance</span>
-          <span className="text-sm text-gray-500">{account.accountNumber}</span>
+          <span className="text-sm text-gray-500 dark:text-gray-400">Balance</span>
+          <span className="text-sm text-gray-500 dark:text-gray-400">{account.accountNumber}</span>
         </div>
-        <p className="text-2xl font-bold text-gray-900">${account.balance.toLocaleString()}</p>
+        <p className="text-2xl font-bold text-gray-900 dark:text-gray-100">${account.balance.toLocaleString()}</p>
         <span className={`inline-block px-2 py-1 rounded-full text-xs font-medium ${
           account.type === 'Checking' ? 'bg-blue-100 text-blue-800' :
           account.type === 'Savings' ? 'bg-green-100 text-green-800' :
@@ -79,12 +79,12 @@ const BankAccounts = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       {/* Header */}
-      <div className="bg-white shadow-sm border-b border-gray-200">
+      <div className="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">
         <div className="p-6">
           <div className="flex justify-between items-center">
-            <h1 className="text-2xl font-bold text-gray-900">Bank Accounts</h1>
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Bank Accounts</h1>
             <button className="flex items-center space-x-2 px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors">
               <Plus className="w-4 h-4" />
               <span className="text-sm">Link Account</span>
@@ -96,24 +96,24 @@ const BankAccounts = () => {
       <div className="p-6">
         {/* Summary Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <div className="bg-white rounded-xl p-6 shadow-sm">
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">Total Balance</h3>
+          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-700">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">Total Balance</h3>
             <p className="text-3xl font-bold text-green-600">
               ${accounts.reduce((sum, acc) => sum + acc.balance, 0).toLocaleString()}
             </p>
-            <p className="text-sm text-gray-500 mt-1">Across all accounts</p>
+            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Across all accounts</p>
           </div>
           
-          <div className="bg-white rounded-xl p-6 shadow-sm">
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">Active Accounts</h3>
+          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-700">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">Active Accounts</h3>
             <p className="text-3xl font-bold text-blue-600">{accounts.length}</p>
-            <p className="text-sm text-gray-500 mt-1">Connected banks</p>
+            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Connected banks</p>
           </div>
           
-          <div className="bg-white rounded-xl p-6 shadow-sm">
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">This Month</h3>
+          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-700">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">This Month</h3>
             <p className="text-3xl font-bold text-purple-600">+$3,250</p>
-            <p className="text-sm text-gray-500 mt-1">Net flow</p>
+            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Net flow</p>
           </div>
         </div>
 
@@ -128,20 +128,20 @@ const BankAccounts = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: accounts.length * 0.1 }}
-            className="border-2 border-dashed border-gray-300 rounded-xl p-6 flex flex-col items-center justify-center hover:border-primary-400 transition-colors cursor-pointer min-h-[200px]"
+            className="border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-xl p-6 flex flex-col items-center justify-center hover:border-primary-400 dark:hover:border-primary-500 transition-colors cursor-pointer min-h-[200px]"
           >
-            <Plus className="w-8 h-8 text-gray-400 mb-2" />
-            <p className="text-gray-500 font-medium">Add New Account</p>
-            <p className="text-sm text-gray-400 text-center">Connect your bank account securely</p>
+            <Plus className="w-8 h-8 text-gray-400 dark:text-gray-500 mb-2" />
+            <p className="text-gray-500 dark:text-gray-400 font-medium">Add New Account</p>
+            <p className="text-sm text-gray-400 dark:text-gray-500 text-center">Connect your bank account securely</p>
           </motion.div>
         </div>
 
         {/* Recent Transactions */}
-        <div className="bg-white rounded-xl p-6 shadow-sm">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Recent Transactions</h3>
+        <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-700">
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Recent Transactions</h3>
           <div className="space-y-4">
             {recentTransactions.map((transaction) => (
-              <div key={transaction.id} className="flex items-center justify-between py-3 border-b border-gray-100 last:border-0">
+              <div key={transaction.id} className="flex items-center justify-between py-3 border-b border-gray-100 dark:border-gray-700 last:border-0">
                 <div className="flex items-center space-x-3">
                   <div className={`w-10 h-10 rounded-full flex items-center justify-center ${
                     transaction.type === 'deposit' ? 'bg-green-100' : 'bg-red-100'
@@ -152,8 +152,8 @@ const BankAccounts = () => {
                     }
                   </div>
                   <div>
-                    <p className="font-medium text-gray-900">{transaction.description}</p>
-                    <p className="text-sm text-gray-500">{transaction.date}</p>
+                    <p className="font-medium text-gray-900 dark:text-gray-100">{transaction.description}</p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">{transaction.date}</p>
                   </div>
                 </div>
                 <div className="text-right">
